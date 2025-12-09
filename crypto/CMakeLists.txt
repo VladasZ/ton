@@ -426,7 +426,7 @@ endif()
 file(MAKE_DIRECTORY smartcont/auto)
 if (NOT CMAKE_CROSSCOMPILING OR USE_EMSCRIPTEN)
   set(GENERATE_TLB_CMD tlbc)
-  if (NOT USE_EMSCRIPTEN)
+  if (TRUE)
     add_custom_command(
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/block
       COMMAND ${TURN_OFF_LSAN}
