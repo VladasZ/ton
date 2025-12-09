@@ -255,6 +255,9 @@ SmartContract::Answer run_smartcont(SmartContract::State state, td::Ref<vm::Stac
         log.log_mask |= vm::VmLog::DumpStack;
         if (vm_log_verbosity > 4) {
           log.log_mask |= vm::VmLog::DumpStackVerbose;
+          if (vm_log_verbosity > 5) {
+            log.log_mask |= vm::VmLog::DumpVerbose;
+          }
         }
       }
     }

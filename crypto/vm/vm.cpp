@@ -442,6 +442,11 @@ int VmState::step() {
     stack->dump(ss, mode);
     VM_LOG(this) << "stack:" << ss.str();
   }
+
+  if (log.log_mask & vm::VmLog::DumpVerbose) {
+    VM_LOG(this) << "consumed gas: " << gas.gas_base << " " << gas.gas_credit << " " << gas.gas_max << " " << gas.gas_remaining;
+  }
+
   if (stack_trace) {
     std::unique_ptr<VmStateInterface> tmp_ctx;
     // install temporary dummy vm state interface to prevent charging for cell load operations during dump
