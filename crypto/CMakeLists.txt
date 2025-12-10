@@ -126,7 +126,10 @@ set(TON_CRYPTO_SOURCE
   vm/vmstate.h
   vm/utils.h
   vm/vm.h
-  vm/bls.h)
+  vm/bls.h
+        vm/vm-step-exporter.cpp
+        vm/vm-step-exporter.h
+        vm/json.h)
 
 set(TON_DB_SOURCE
   vm/db/DynamicBagOfCellsDb.cpp

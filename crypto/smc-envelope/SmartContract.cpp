@@ -284,6 +284,8 @@ SmartContract::Answer run_smartcont(SmartContract::State state, td::Ref<vm::Stac
   }
   try {
     res.code = ~vm.run();
+  } catch (const std::exception& e) {
+    LOG(FATAL) << "Caught unhandled standard exception: " << e.what();
   } catch (...) {
     LOG(FATAL) << "catch unhandled exception";
   }

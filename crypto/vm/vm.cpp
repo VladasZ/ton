@@ -23,6 +23,7 @@
 #include "vm/vm.h"
 #include "cp0.h"
 #include "memo.h"
+#include "vm-step-exporter.h"
 
 #include <sodium.h>
 
@@ -443,9 +444,7 @@ int VmState::step() {
     VM_LOG(this) << "stack:" << ss.str();
   }
 
-  if (log.log_mask & vm::VmLog::DumpVerbose) {
-    VM_LOG(this) << "consumed gas: " << gas.gas_base << " " << gas.gas_credit << " " << gas.gas_max << " " << gas.gas_remaining;
-  }
+  VmStepExporter::export_step(this);
 
   if (stack_trace) {
     std::unique_ptr<VmStateInterface> tmp_ctx;

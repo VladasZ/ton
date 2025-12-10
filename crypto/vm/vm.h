@@ -28,7 +28,10 @@
 #include "td/utils/HashSet.h"
 #include "td/utils/optional.h"
 
+class VmStep;
 namespace vm {
+
+class VmStepExporter;
 
 using td::Ref;
 struct GasLimits {
@@ -443,6 +446,9 @@ class VmState final : public VmStateInterface {
   td::HashSet<CellHash> extract_loaded_cells() {
     return std::move(loaded_cells);
   }
+
+  friend VmStepExporter;
+  friend VmStep;
 
  private:
   void init_cregs(bool same_c3 = false, bool push_0 = true);
